@@ -1,0 +1,8 @@
+namespace ClinicManagementSystem.Shared.Constants;
+
+public class CustomClaims
+{
+    public const string Id = "id";
+    public const string Name = "firstName";
+    public const string Email = "email";
+}
