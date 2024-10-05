@@ -1,4 +1,4 @@
-<h1 align="center">api-base-net8</h1>
+<h1 align="center">VetConnect</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-8.0-blue" alt=".NET">
@@ -6,47 +6,38 @@
   <img src="https://img.shields.io/badge/Architecture-Layered-orange" alt="Architecture">
 </p>
 
-This project serves as a template for .NET 8 APIs, following Clean Architecture principles. It comes with a basic authentication and authorization system already in place, providing a robust and scalable structure for developing secure and high-quality APIs. Ideal for projects that require a strong foundation with best practices in design and security.
+Fala pessoal! Esse é o nosso projeto integrador do Senac EAD. Essa é a nossa API, que terá toda a regra de negócios de nosso projeto.
 
-## Features
+Seguindo os passos listados voce deve conseguir usar o projeto sem muitas dificuldades. Caso tenha dificuldades estou a disposição para ajudar.
 
-- **Layered Architecture**: Clear separation of concerns between layers.
-- **.NET 8.0**: Latest .NET version with performance improvements.
-- **PostgreSQL**: Pre-configured integration with PostgreSQL database.
-- **Extensible**: Easy to extend and adapt for various types of APIs.
-- **Best Practices**: Implements good coding practices like dependency injection and repository pattern.
-
-
-## Prerequisites
+## Pré requisitos
 
 - [.NET SDK 8.0](https://dotnet.microsoft.com/download)
 - [PostgreSQL 16](https://www.postgresql.org/download/)
 - [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
+- IDE (Visual Studio 2022 ou Rider)
 
 ## Setup
 
-1. Create a new repository with this template:
+1. Clone o repositório:
+<img src="https://github.com/user-attachments/assets/0fd91b2f-7440-4958-9f55-fc8006c8b50e" width="300" />
 
-   
-![image](https://github.com/user-attachments/assets/22a33fe0-92f2-4d32-b361-160b3c409772)
-
-
-3. Atualize o `appsettings.json` com sua string de conexão do PostgreSQL:
+2. Atualize o `appsettings.json` com sua string de conexão do PostgreSQL:
 
    ```json
    "ConnectionStrings": {
      "DefaultConnection": "Host=localhost;Database=seubanco;Username=seuusuario;Password=suasenha"
    }
 
-4. Execute as migrações do banco de dados:
+3. Execute as migrações do banco de dados:
 
         dotnet ef database update
 
-5. Inicie a API:
+4. Inicie a API:
    
        dotnet run
 
-## Contact
+## Contato
 
 For inquiries or support, please contact me through the following channels:
 
