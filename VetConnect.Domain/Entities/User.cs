@@ -13,6 +13,9 @@ public class User : BaseEntity
     public string Password { get; private set; }
     public EUserType UserType { get; private set; }
     
+    // Relacionamento 1:N - Um User pode ter vários Pets
+    public ICollection<Pet> Pets { get; private set; } = new List<Pet>();
+    
     public static User New(
         string firstName,
         string lastName,

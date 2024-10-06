@@ -33,5 +33,10 @@ internal class UserMap : IEntityTypeConfiguration<User>
 
         builder.HasIndex(x => x.Email)
             .IsUnique(true);
+        
+        builder.HasMany(u => u.Pets)
+            .WithOne(p => p.User)
+            .HasForeignKey(p => p.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

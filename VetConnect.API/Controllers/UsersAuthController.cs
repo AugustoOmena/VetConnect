@@ -5,7 +5,7 @@ using VetConnect.Domain.Commands.Auth;
 using VetConnect.Shared.Notifications;
 using Microsoft.AspNetCore.Authorization;
 
-namespace ClinicManagementSystem.API.Controllers;
+namespace VetConnect.API.Controllers;
 
 [Route("api/connect")]
 [ApiController]
