@@ -29,7 +29,7 @@ public class JwtService : IJwtService
         {
             Subject = new ClaimsIdentity(new Claim[]
             {
-                new Claim(JwtRegisteredClaimNames.UniqueName, user.Name.ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.FirstName.ToString() + user.LastName.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email.ToString()),
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
             }),

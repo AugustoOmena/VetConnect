@@ -15,102 +15,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79f49a9c-1dee-4c9a-aa3a-68c9ca86e2ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/VetConnect.Domain/Services/Contracts/IJwtService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ClinicManagementSystem/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ClinicManagementSystem/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ClinicManagementSystem/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ClinicManagementSystem/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/ClinicManagementSystem.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/VetConnect.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/Controllers/UsersAuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/Controllers/UsersAuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/Controllers/UsersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/Controllers/UsersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/Controllers/WeatherForecastController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/PreciseiChamei.API.http" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/PreciseiChamei.API.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/UseCases/CreateUser/CreateUserHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/UseCases/CreateUser/CreateUserHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/UseCases/CreateUser/CreateUserMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/UseCases/CreateUser/CreateUserMapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/UseCases/CreateUser/CreateUserResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/UseCases/CreateUser/CreateUserResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/UseCases/Login/LoginUserRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/UseCases/Login/LoginUserRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/UseCases/Login/LoginUserValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/UseCases/Login/LoginUserValidator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/WeatherForecast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/WeatherForecast.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.API/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Api.Config/BaseApiController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Api.Config/BaseApiController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Api.Config/ClinicManagementSystem.Api.Config.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Api.Config/VetConnect.Api.Config.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Api.Config/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Api.Config/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Api.Config/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Api.Config/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Api.Config/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Api.Config/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Api.Config/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Api.Config/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Data/ClinicManagementSystem.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Data/VetConnect.Data.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Data/Maps/UserMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Data/Maps/UserMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Data/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Data/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Data/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Data/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Data/Repositories/Repositories.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Data/Repositories/Repositories.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Data/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Data/Repositories/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Data/UnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Data/UnitOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Data/Utils/DataContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Data/Utils/DataContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Data/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Data/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Data/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Data/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Class1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/ClinicManagementSystem.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/VetConnect.Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/CommandHandler/BaseCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/CommandHandler/BaseCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/CommandHandler/ClientUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/CommandHandler/ClientUserCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Commands/Auth/AuthorizeUserCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Commands/Auth/AuthorizeUserCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Commands/UserClient/CreateClientUserByClinicManagementSystemCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Commands/UserClient/CreateClientUserByClinicManagementSystemCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Contracts/Repositories/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Contracts/Repositories/IUserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Entities/BaseEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Entities/BaseEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Entities/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Filters/UserFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Filters/UserFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Interfaces/IBaseRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Interfaces/IBaseRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Interfaces/IUnityOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Interfaces/IUnityOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Interfaces/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Interfaces/IUserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Results/Auth/AuthorizeUserResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Results/Auth/AuthorizeUserResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Results/UserClient/BaseClientUserResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Results/UserClient/BaseClientUserResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Results/UserClient/CreateUserResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Results/UserClient/CreateUserResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Services/Contracts/IJwtService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Services/JwtService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Services/JwtService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Validators/AuthUserValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Validators/AuthUserValidator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Validators/CreateClientUserValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Validators/CreateClientUserValidator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Validators/CreateUserValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Validators/CreateUserValidator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Domain/Validators/Requests/CreateUserRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Domain/Validators/Requests/CreateUserRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/Class1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/ClinicManagementSystem.Persistence.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/VetConnect.Persistence.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/Context/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/Context/AppDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/DesignTimeDbContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/DesignTimeDbContextFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/Migrations/20240729135921_Initial_Migration.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/Migrations/20240729135921_Initial_Migration.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/Migrations/20240729135921_Initial_Migration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/Migrations/20240729135921_Initial_Migration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/Migrations/20240928142130_Add_Password_And_User_Type_To_Usuario.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/Migrations/20240928142130_Add_Password_And_User_Type_To_Usuario.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/Migrations/20240928142130_Add_Password_And_User_Type_To_Usuario.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/Migrations/20240928142130_Add_Password_And_User_Type_To_Usuario.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/Repositories/BaseRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/Repositories/BaseRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/Repositories/UnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/Repositories/UnitOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/Repositories/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Persistence/ServiceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Persistence/ServiceExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/ClinicManagementSystem.Shared.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/VetConnect.Shared.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Constants/CustomClains.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Constants/CustomClains.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Enums/EUserType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Enums/EUserType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Notifications/DomainNotification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Notifications/DomainNotification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Notifications/IDomainNotification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Notifications/IDomainNotification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Notifications/Notifications.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Notifications/Notifications.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Paging/IPagination.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Paging/IPagination.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Paging/PagedList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Paging/PagedList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Paging/Pagination.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Paging/Pagination.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Persistence/BaseEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Persistence/BaseEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Persistence/IRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Persistence/IRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Persistence/IUnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Persistence/IUnitOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Results/EnvelopDataResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Results/EnvelopDataResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Results/EnvelopFailResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Results/EnvelopFailResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Results/EnvelopResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Results/EnvelopResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Security/SessionUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Security/SessionUser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Swagger/EnvelopFailResultExampleSchemaFilter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Swagger/EnvelopFailResultExampleSchemaFilter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/Utils/PredicateBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/Utils/PredicateBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Shared/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Shared/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Tests/ClinicManagementSystem.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Tests/VetConnect.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.Tests/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.Tests/UnitTest1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClinicManagementSystem.sln" beforeDir="false" afterPath="$PROJECT_DIR$/VetConnect.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ClinicManagementSystem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ClinicManagementSystem/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,6 +28,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/VetConnect.API/Properties/launchSettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/VetConnect.API/UseCases/CreateUser/CreateUserHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c15184cdf8254e74a8a6ee96bd1b8738d82000/bc/baa6fe7a/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 8
@@ -135,7 +41,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    ".NET Launch Settings Profile.ClinicManagementSystem.API: http.executor": "Debug",
     ".NET Launch Settings Profile.ClinicManagementSystem.Api.Config: http.executor": "Debug",
+    ".NET Launch Settings Profile.ClinicManagementSystem.Api.Config: https.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
@@ -283,7 +191,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1728169029108</updated>
-      <workItem from="1728169030928" duration="717000" />
+      <workItem from="1728169030928" duration="2537000" />
     </task>
     <servers />
   </component>

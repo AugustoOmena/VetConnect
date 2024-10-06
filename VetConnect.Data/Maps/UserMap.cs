@@ -23,8 +23,12 @@ internal class UserMap : IEntityTypeConfiguration<User>
             .HasMaxLength(5000)
             .IsRequired(false);
 
-        builder.Property(x => x.Name)
-            .HasMaxLength(255)
+        builder.Property(x => x.FirstName)
+            .HasMaxLength(120)
+            .IsRequired();
+        
+        builder.Property(x => x.LastName)
+            .HasMaxLength(120)
             .IsRequired();
 
         builder.HasIndex(x => x.Email)

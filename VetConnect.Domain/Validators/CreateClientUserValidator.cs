@@ -8,7 +8,8 @@ public sealed class CreateClientUserValidator : AbstractValidator<CreateClientUs
     public CreateClientUserValidator()
     {
         RuleFor(x => x.Email).NotEmpty().MaximumLength(50).EmailAddress();
-        RuleFor(x => x.Name).NotEmpty().MinimumLength(3).MaximumLength(50);
+        RuleFor(x => x.FirstName).NotEmpty().MinimumLength(3).MaximumLength(50);
+        RuleFor(x => x.LastName).NotEmpty().MinimumLength(3).MaximumLength(50);
         RuleFor(x => x.Password).NotEmpty().MinimumLength(3).MaximumLength(50);
     }
 }

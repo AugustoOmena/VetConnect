@@ -19,10 +19,15 @@ public sealed class UserRepository : Repository<User>, IUserRepository
     {
         var predicate = PredicateBuilder.True<User>();
             
-        predicate = string.IsNullOrWhiteSpace(filter.Name)
+        predicate = string.IsNullOrWhiteSpace(filter.FirstName)
             ? predicate
-            : predicate.And(x => EF.Functions.Like(x.Name .ToLower(), $"%{filter.Name.ToLower()}%"));
+            : predicate.And(x => EF.Functions.Like(x.FirstName .ToLower(), $"%{filter.FirstName.ToLower()}%"));
 
+        predicate = string.IsNullOrWhiteSpace(filter.LastName)
+            ? predicate
+            : predicate.And(x => EF.Functions.Like(x.LastName .ToLower(), $"%{filter.LastName.ToLower()}%"));
+
+        
         predicate = string.IsNullOrWhiteSpace(filter.Email)
             ? predicate
             : predicate.And(x => x.Email.ToLower() == filter.Email.ToLower());

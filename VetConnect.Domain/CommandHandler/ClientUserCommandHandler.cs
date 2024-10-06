@@ -40,8 +40,10 @@ public class ClientUserCommandHandler : BaseCommandHandler,
         }
 
         var newUser = User.New(
-            request.Name,
+            request.FirstName,
+            request.LastName,
             request.Email,
+            request.Phone,
             request.Password,
             request.UserType
         );
