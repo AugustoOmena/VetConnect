@@ -4,6 +4,7 @@ namespace VetConnect.Domain.Entities;
 
 public class Pet : BaseEntity
 {
+    protected Pet(){}
     public string Name { get; private set; }
     public EPetType PetType { get; private set; }
     public string Race { get; private set; }
@@ -24,4 +25,21 @@ public class Pet : BaseEntity
         BirthDate = birthDate;
         UserId = userId;
     }
+
+    public static Pet New(
+        string name,
+        EPetType petType,
+        string race,
+        DateTimeOffset birthDate,
+        Guid userId
+    ) => new Pet
+    {
+        DateCreated = DateTime.UtcNow,
+        Id = Guid.NewGuid(),
+        Name = name,
+        PetType = petType,
+        Race = race,
+        BirthDate = birthDate,
+        UserId = userId
+    };
 }

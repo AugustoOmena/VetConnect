@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using VetConnect.Domain.Commands.Pets;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,10 +25,12 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IDomainNotification, DomainNotification>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPetRepository, PetRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateClientUserByVetConnectCommand>());
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreatePetCommand>());
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<AuthorizeUserCommand>());
 
 
