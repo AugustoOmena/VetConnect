@@ -17,8 +17,6 @@ namespace VetConnect.Shared.Security;
 
             var claimsArray = claims as Claim[] ?? claims.ToArray();
 
-            //sessionUser.Id = Guid.Parse(claimsArray.First(x => x.Type == ClaimTypes.NameIdentifier).Value);
-
             sessionUser.Email = claimsArray
                 .FirstOrDefault(x => x.Type == CustomClaims.Email || x.Type == ClaimTypes.Email)?.Value;
 

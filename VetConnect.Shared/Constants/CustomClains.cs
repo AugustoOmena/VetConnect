@@ -1,5 +1,3 @@
-using VetConnect.Shared.Enums;
-
 namespace VetConnect.Shared.Constants;
 
 public class CustomClaims
