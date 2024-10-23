@@ -11,8 +11,9 @@ public class PetRepository : Repository<Pet>, IPetRepository
     {
     }
 
-    public Task<T> AddPetAsync<T>(T pet)
+    public async Task<T> AddPetAsync<T>(T pet)
     {
-        throw new NotImplementedException();
+        await _context.AddAsync(pet);
+        return pet;
     }
 }

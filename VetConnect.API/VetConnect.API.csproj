@@ -24,6 +24,7 @@
       <ProjectReference Include="..\VetConnect.Api.Config\VetConnect.Api.Config.csproj" />
       <ProjectReference Include="..\VetConnect.Data\VetConnect.Data.csproj" />
       <ProjectReference Include="..\VetConnect.Domain\VetConnect.Domain.csproj" />
+      <ProjectReference Include="..\VetConnect.Infrastructure\VetConnect.Infrastructure.csproj" />
       <ProjectReference Include="..\VetConnect.Persistence\VetConnect.Persistence.csproj" />
     </ItemGroup>
 

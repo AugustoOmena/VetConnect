@@ -17,14 +17,16 @@ namespace VetConnect.Shared.Security;
 
             var claimsArray = claims as Claim[] ?? claims.ToArray();
 
-            sessionUser.Id = Guid.Parse(claimsArray.First(x => x.Type == CustomClaims.Id).Value);
+            //sessionUser.Id = Guid.Parse(claimsArray.First(x => x.Type == ClaimTypes.NameIdentifier).Value);
 
             sessionUser.Email = claimsArray
                 .FirstOrDefault(x => x.Type == CustomClaims.Email || x.Type == ClaimTypes.Email)?.Value;
 
-            sessionUser.Name = claimsArray.FirstOrDefault(x => x.Type == CustomClaims.Name)
-                ?.Value;
+            sessionUser.Name = claimsArray
+                .FirstOrDefault(x => x.Type == CustomClaims.Name || x.Type == ClaimTypes.Name)?.Value;
        
+            sessionUser.Id = Guid.Parse(claimsArray.First(x => x.Type == ClaimTypes.NameIdentifier).Value);
+            
             //TODO SysAdmin claims
             
             return sessionUser;

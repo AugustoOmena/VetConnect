@@ -1,33 +1,33 @@
-using VetConnect.Shared.Enums;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using VetConnect.Domain.Entities;
 
-namespace VetConnect.Domain.Entities;
+namespace VetConnect.Data.Maps;
 
-public class Pet : BaseEntity
+internal class PetMap : IEntityTypeConfiguration<Pet>
 {
-    public string Name { get; private set; }
-    public EPetType PetType { get; private set; }
-    public string Race { get; private set; }
-    public DateTimeOffset BirthDate { get; private set; }
-
-    // Relacionamento N:1 - Um Pet pertence a um único User
-    public Guid UserId { get; private set; }
-    public User User { get; private set; }
-
-    // Relacionamento 1:N - Um Pet pode ter vários ServiceHistories
-    public ICollection<ServiceHistory> ServiceHistories { get; private set; } = new List<ServiceHistory>();
-
-    public Pet(string name, EPetType petType, string race, DateTimeOffset birthDate, Guid userId)
+    public void Configure(EntityTypeBuilder<Pet> builder)
     {
-        Name = name;
-        PetType = petType;
-        Race = race;
-        BirthDate = birthDate;
-        UserId = userId;
-    }
+        builder.ToTable("Pets");
 
-    // Método para adicionar ServiceHistory
-    public void AddServiceHistory(ServiceHistory serviceHistory)
-    {
-        ServiceHistories.Add(serviceHistory);
+        builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.Id)
+            .ValueGeneratedNever();
+
+        builder.Property(x => x.UserId);
+
+        builder.Property(x => x.Name)
+            .HasMaxLength(255);
+
+        builder.Property(x => x.Race)
+            .HasMaxLength(120);
+
+        builder.Property(x => x.PetType);
+
+        builder.HasOne(p => p.User)
+            .WithMany(u => u.Pets)
+            .HasForeignKey(p => p.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

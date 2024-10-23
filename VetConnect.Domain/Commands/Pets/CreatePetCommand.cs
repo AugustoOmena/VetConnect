@@ -1,5 +1,5 @@
+using System.Text.Json.Serialization;
 using MediatR;
-using Newtonsoft.Json;
 using VetConnect.Domain.Results.Pet;
 using VetConnect.Shared.Enums;
 using VetConnect.Shared.Security;
@@ -17,5 +17,5 @@ public class CreatePetCommand: IRequest<BasePetResult>
     public DateTimeOffset BirthDate { get; set; }
     
     [JsonIgnore]
-    public SessionUser SessionUser { get; set; }
+    public SessionUser? SessionUser { get; set; }
 }

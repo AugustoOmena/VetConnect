@@ -58,7 +58,7 @@ namespace VetConnect.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Pets");
+                    b.ToTable("Pets", (string)null);
                 });
 
             modelBuilder.Entity("VetConnect.Domain.Entities.ServiceHistory", b =>
@@ -94,7 +94,7 @@ namespace VetConnect.Persistence.Migrations
 
                     b.HasIndex("PetId");
 
-                    b.ToTable("ServiceHistories");
+                    b.ToTable("ServiceHistories", (string)null);
                 });
 
             modelBuilder.Entity("VetConnect.Domain.Entities.User", b =>
@@ -135,7 +135,7 @@ namespace VetConnect.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("VetConnect.Domain.Entities.Pet", b =>

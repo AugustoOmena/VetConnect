@@ -29,7 +29,7 @@ public class PetCommandHandler : BaseCommandHandler,
 
         if (!validationResult.IsValid)
         {
-            response.Message = "opa, algo não funcionou";
+            response.Message = validationResult.ToString();
             return response;
         }
 
