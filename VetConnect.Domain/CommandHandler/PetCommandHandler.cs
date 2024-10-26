@@ -10,7 +10,8 @@ using IUnitOfWork = VetConnect.Shared.Persistence.IUnitOfWork;
 namespace VetConnect.Domain.CommandHandler;
 
 public class PetCommandHandler : BaseCommandHandler,
-    IRequestHandler<CreatePetCommand, BasePetResult>
+    IRequestHandler<CreatePetCommand, BasePetResult>,
+    IRequestHandler<UpdatePetCommand, BasePetResult>
 {
 
     private readonly IPetRepository _petRepository;
@@ -51,5 +52,34 @@ public class PetCommandHandler : BaseCommandHandler,
 
         response.Success = true;
         return response;
+    }
+
+    public async Task<BasePetResult> Handle(UpdatePetCommand command, CancellationToken cancellationToken)
+    {
+        var result = new BasePetResult();
+        var pet = await _petRepository.FindAsync(x => x.Id == command.Id && x.UserId == command.SessionUser.Id);
+        
+        if (pet == null)
+        {
+            Notifications.Handle("Pet não encontrado");
+            return result;
+        }
+        
+        pet.Update(
+            command.Name,
+            command.PetType,
+            command.Race,
+            command.BirthDate
+        );
+        
+        if (!await CommitAsync())
+        {
+            Notifications.Handle("Houve um probema ao salvar as informações");
+            return result;
+        }
+        
+        result.Success = true;
+        result.Message = "Edição feita com sucesso";
+        return result;
     }
 }

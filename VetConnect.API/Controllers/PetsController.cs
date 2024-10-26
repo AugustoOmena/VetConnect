@@ -51,4 +51,15 @@ public class PetsController : BaseApiController
             },
             CancellationToken.None));
     }
+    
+    /// <summary>
+    ///     Atualiza um pet do usuário de acordo com o ID informado.
+    /// </summary>
+    [HttpPut("v1/Edit/Pet/{id:guid}")]
+    public async Task<IActionResult> UpdateBoardingPoint([FromRoute] Guid id, [FromBody] UpdatePetCommand command)
+    {
+        command.Id = id;
+        command.SessionUser = _sessionUser;
+        return CreateResponse(await _mediator.Send(command, CancellationToken.None));
+    }
 }

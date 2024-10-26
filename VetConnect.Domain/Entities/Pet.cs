@@ -42,4 +42,17 @@ public class Pet : BaseEntity
         BirthDate = birthDate,
         UserId = userId
     };
+    
+    public void Update(
+        string name,
+        EPetType petType,
+        string race,
+        DateTimeOffset birthDate
+    ) 
+    {
+        Name = name;
+        PetType = petType;
+        Race = race;
+        BirthDate = birthDate;
+    }
 }

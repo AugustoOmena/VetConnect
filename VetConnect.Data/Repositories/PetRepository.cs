@@ -23,6 +23,10 @@ public class PetRepository : Repository<Pet>, IPetRepository
     public Expression<Func<Pet, bool>> Where(PetsByUserQuery query)
     {
         var predicate = PredicateBuilder.True<Pet>();
+
+        predicate = predicate.And(x => x.DateDeleted == null);
+
+        predicate = predicate.And(x => x.UserId == query.SessionUser.Id);
         
         predicate = (query.Filter.Name == null)
             ? predicate
