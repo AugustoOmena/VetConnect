@@ -11,7 +11,8 @@ namespace VetConnect.Domain.CommandHandler;
 
 public class PetCommandHandler : BaseCommandHandler,
     IRequestHandler<CreatePetCommand, BasePetResult>,
-    IRequestHandler<UpdatePetCommand, BasePetResult>
+    IRequestHandler<UpdatePetCommand, BasePetResult>,
+    IRequestHandler<DeletePetCommand, BasePetResult>
 {
 
     private readonly IPetRepository _petRepository;
@@ -80,6 +81,30 @@ public class PetCommandHandler : BaseCommandHandler,
         
         result.Success = true;
         result.Message = "Edição feita com sucesso";
+        return result;
+    }
+
+    public async Task<BasePetResult> Handle(DeletePetCommand command, CancellationToken cancellationToken)
+    {
+        var result = new BasePetResult();
+        var pet = await _petRepository.FindAsync(x => x.Id == command.Id && x.UserId == command.SessionUser.Id);
+        
+        if (pet == null)
+        {
+            Notifications.Handle("Pet não encontrado");
+            return result;
+        }
+        
+        pet.Delete();
+        
+        if (!await CommitAsync())
+        {
+            Notifications.Handle("Houve um probema ao salvar as informações");
+            return result;
+        }
+        
+        result.Success = true;
+        result.Message = "Exclusão feita com sucesso";
         return result;
     }
 }

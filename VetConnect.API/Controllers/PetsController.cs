@@ -56,10 +56,24 @@ public class PetsController : BaseApiController
     ///     Atualiza um pet do usuário de acordo com o ID informado.
     /// </summary>
     [HttpPut("v1/Edit/Pet/{id:guid}")]
-    public async Task<IActionResult> UpdateBoardingPoint([FromRoute] Guid id, [FromBody] UpdatePetCommand command)
+    public async Task<IActionResult> UpdatePet([FromRoute] Guid id, [FromBody] UpdatePetCommand command)
     {
         command.Id = id;
         command.SessionUser = _sessionUser;
+        return CreateResponse(await _mediator.Send(command, CancellationToken.None));
+    }
+    
+    /// <summary>
+    ///     Deleta(desativa) um pet do usuário de acordo com o ID informado.
+    /// </summary>
+    [HttpDelete("v1/Delete/Pet/{id:guid}")]
+    public async Task<IActionResult> DeletePet([FromRoute] Guid id)
+    {
+        var command = new DeletePetCommand()
+        {
+            Id = id,
+            SessionUser = _sessionUser
+        };
         return CreateResponse(await _mediator.Send(command, CancellationToken.None));
     }
 }

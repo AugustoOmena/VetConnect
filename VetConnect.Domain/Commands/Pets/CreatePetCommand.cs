@@ -6,7 +6,7 @@ using VetConnect.Shared.Security;
 
 namespace VetConnect.Domain.Commands.Pets;
 
-public class CreatePetCommand: IRequest<BasePetResult>
+public class CreatePetCommand : IRequest<BasePetResult>
 {
     public string Name { get; set; }
     

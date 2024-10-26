@@ -54,5 +54,11 @@ public class Pet : BaseEntity
         PetType = petType;
         Race = race;
         BirthDate = birthDate;
+        DateDeleted = DateTime.UtcNow;
+    }
+
+    public void Delete()
+    {
+        DateDeleted = DateTime.UtcNow;
     }
 }
