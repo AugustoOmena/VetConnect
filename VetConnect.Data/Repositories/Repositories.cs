@@ -3,6 +3,7 @@ using VetConnect.Shared.Paging;
 using VetConnect.Shared.Persistence;
 using Microsoft.EntityFrameworkCore;
 using VetConnect.Data.Utils;
+using System.Linq.Dynamic.Core;
 
 namespace VetConnect.Data.Repositories
 {
@@ -46,6 +47,37 @@ namespace VetConnect.Data.Repositories
         {
             return where == null ? await DbSet.CountAsync() : await DbSet.CountAsync(where);
         }
+        
+        private IQueryable<T> CurrentSet(Expression<Func<T, bool>> where = null, int? page = null,
+            int? PageSize = null,
+            string SortField = null, string SortType = null, IEnumerable<string> includes = null)
+        {
+            IQueryable<T> currentSet = _context.Set<T>();
+
+            where ??= (x => true);
+
+            if (includes != null)
+            {
+                currentSet = includes.Where(include => !string.IsNullOrEmpty(include))
+                    .Aggregate(currentSet, (current, include) => current.Include(include));
+            }
+
+            currentSet = currentSet.Where(where);
+
+            if (!string.IsNullOrEmpty(SortField) && !string.IsNullOrEmpty(SortType))
+            {
+                currentSet = currentSet.OrderBy(SortField + " " + SortType);
+            }
+
+            if (page != null && PageSize != null)
+            {
+                currentSet = currentSet
+                    .Skip((page.Value - 1) * PageSize.Value)
+                    .Take(PageSize.Value);
+            }
+
+            return currentSet;
+        }
 
         public IQueryable<T> List(Expression<Func<T, bool>> where = null, IPagination pagination = null)
         {
@@ -58,6 +90,19 @@ namespace VetConnect.Data.Repositories
             }
 
             return query;
+        }
+        
+        public IQueryable<T> List(Expression<Func<T, bool>> where, IPagination pagination,
+            IEnumerable<string> includes = null)
+        {
+            return CurrentSet(where, pagination.PageIndex, pagination.PageSize, pagination.SortField,
+                pagination.SortType, includes);
+        }
+        
+        public IQueryable<T> ListAsNoTracking(Expression<Func<T, bool>> where, IPagination pagination,
+            IEnumerable<string> includes = null)
+        {
+            return List(where, pagination, includes).AsNoTracking();
         }
 
         // public PagedList<T> PagedList(Expression<Func<T, bool>> where, IPagination pagination)

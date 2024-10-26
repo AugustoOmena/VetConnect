@@ -1,6 +1,4 @@
 using System.Linq.Expressions;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using VetConnect.Shared.Paging;
 
 namespace VetConnect.Shared.Persistence
@@ -17,6 +15,9 @@ namespace VetConnect.Shared.Persistence
         Task<int> CountAsync(Expression<Func<T, bool>> where = null);
         IQueryable<T> List(Expression<Func<T, bool>> where = null, IPagination pagination = null);
         
+        IQueryable<T> ListAsNoTracking(Expression<Func<T, bool>> where,
+            IPagination pagination,
+            IEnumerable<string> includes = null);
         
         //PagedList<T> PagedList(Expression<Func<T, bool>> where, IPagination pagination);
     }

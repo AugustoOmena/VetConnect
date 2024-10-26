@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using VetConnect.Api.Config;
 using VetConnect.Domain.Commands.Pets;
 using VetConnect.Domain.Contracts.Infra;
+using VetConnect.Domain.Filters;
+using VetConnect.Domain.Queries.Users;
 using VetConnect.Shared.Notifications;
 using VetConnect.Shared.Security;
 
@@ -23,6 +25,9 @@ public class PetsController : BaseApiController
         _sessionUser = loggedUser.User;
     }
 
+    /// <summary>
+    ///     Cria um novo Pet do usuário logado
+    /// </summary>
     [HttpPost]
     [Route("v1/Create/Pet")]
     public async Task<IActionResult> CreatePet([FromBody] CreatePetCommand command,
@@ -30,5 +35,20 @@ public class PetsController : BaseApiController
     {
         command.SessionUser = _sessionUser;
         return CreateResponse(await _mediator.Send(command, CancellationToken.None));
+    }
+    
+    /// <summary>
+    ///     Obtém lista de pets do usuário logado.
+    /// </summary>
+    [HttpGet("v1/List/Pets")]
+    public async Task<IActionResult> ListUserPets([FromQuery] ListUserPetsFilter filter)
+    {
+        return CreateResponse(await _mediator.Send(
+            new PetsByUserQuery()
+            {
+                Filter = filter,
+                SessionUser = _sessionUser
+            },
+            CancellationToken.None));
     }
 }
