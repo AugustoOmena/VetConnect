@@ -11,8 +11,7 @@ Fala pessoal! Esse é o nosso projeto integrador do Senac EAD. Essa é a nossa A
 Seguindo os passos listados voce deve conseguir usar o projeto sem muitas dificuldades. Caso tenha dificuldades estou a disposição para ajudar.
 
 Estado Atual:
-![image](https://github.com/user-attachments/assets/4e8b8fba-ea30-495f-a01c-a1ae85f7ebf4)
-
+![image](https://github.com/user-attachments/assets/315a7592-8c39-40e0-abb6-5f0c5e0abb79)
 
 ## Pré requisitos
 
