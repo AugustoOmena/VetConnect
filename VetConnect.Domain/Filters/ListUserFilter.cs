@@ -2,7 +2,7 @@ using VetConnect.Shared.Paging;
 
 namespace VetConnect.Domain.Filters;
 
-public class UserFilter : Pagination
+public class ListUserFilter : Pagination
 {
     public string FirstName { get; set; }
     

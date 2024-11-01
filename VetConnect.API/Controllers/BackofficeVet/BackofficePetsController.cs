@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using VetConnect.Api.Config;
 using VetConnect.Domain.Commands.Pets.Backoffice;
 using VetConnect.Domain.Contracts.Infra;
+using VetConnect.Domain.Filters;
+using VetConnect.Domain.Queries.Backoffice;
 using VetConnect.Shared.Notifications;
 using VetConnect.Shared.Security;
 
@@ -32,7 +34,20 @@ public class BackofficePetsController : BaseApiController
         return CreateResponse(await _mediator.Send(command, CancellationToken.None));
     }
     
-    // Listagem de usuários
+    /// <summary>
+    ///     Listagem de usuários
+    /// </summary>
+    [HttpGet("v1/Backoffice/List/Users")]
+    public async Task<IActionResult> ListUserPets([FromQuery] ListUserFilter filter)
+    {
+        return CreateResponse(await _mediator.Send(
+            new UsersByBackofficeQuery()
+            {
+                Filter = filter,
+                SessionUser = _sessionUser
+            },
+            CancellationToken.None));
+    }
     
     
     // Deleção de um Pet para um usuário

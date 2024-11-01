@@ -15,7 +15,7 @@ public sealed class UserRepository : Repository<User>, IUserRepository
     {
     }
 
-    public Expression<Func<User, bool>> Where(UserFilter filter)
+    public Expression<Func<User, bool>> Where(ListUserFilter filter)
     {
         var predicate = PredicateBuilder.True<User>();
             

@@ -7,6 +7,6 @@ namespace VetConnect.Domain.Contracts.Repositories;
 
 public interface IUserRepository : IRepository<User>
 {
-    Expression<Func<User, bool>> Where(UserFilter filter);
+    Expression<Func<User, bool>> Where(ListUserFilter filter);
     Task<T> AddUserAsync<T>(T user);
 }
