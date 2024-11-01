@@ -82,6 +82,6 @@ public class ClientUserCommandHandler : BaseCommandHandler,
             return (response);
         }
         
-        throw new NotImplementedException();
+        return (response);
     }
 }

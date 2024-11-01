@@ -60,7 +60,7 @@ public class LoggedUser : ILoggedUser
     {
         get
         {
-            var userType = GetClaims().FirstOrDefault(x => x.Type == CustomClaims.Type)?.Value?.ToEnumValue<EUserType>();
+            var userType = GetClaims().FirstOrDefault(x => x.Type == CustomClaims.UserType)?.Value?.ToEnumValue<EUserType>();
             if (!userType.HasValue)
                 return null;
 

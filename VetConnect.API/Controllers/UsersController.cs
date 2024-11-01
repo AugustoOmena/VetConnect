@@ -3,13 +3,11 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using VetConnect.Domain.Commands.UserClient;
 using VetConnect.Shared.Notifications;
-using Microsoft.AspNetCore.Authorization;
 
 namespace VetConnect.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
 public class UsersController : BaseApiController
 {
     private readonly IMediator _mediator;
