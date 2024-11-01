@@ -8,6 +8,8 @@ namespace VetConnect.Shared.Persistence
     {
         
         Task<T> FindAsync(Expression<Func<T, bool>> where);
+        Task<T> FindAsync(Expression<Func<T, bool>> where,
+            IEnumerable<string> includes = null);
         Task AddAsync(T entity);
         void Modify(T entity);
         void Remove(T entity);

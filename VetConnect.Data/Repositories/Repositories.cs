@@ -19,10 +19,37 @@ namespace VetConnect.Data.Repositories
             _context = context;
             _connStr = _context.Database.GetDbConnection().ConnectionString;
         }
+        
+        public IQueryable<T> Find(IEnumerable<string> includes = null)
+        {
+            IQueryable<T> currentSet = _context.Set<T>();
+
+            if (includes != null)
+            {
+                currentSet = includes.Where(include => !string.IsNullOrEmpty(include))
+                    .Aggregate(currentSet, (current, include) => current.Include(include));
+            }
+
+            return currentSet;
+        }
+
+        public async Task<T> FindAsync(Expression<Func<T, bool>> where, ICollection<string> includes)
+        {
+            return await DbSet.FirstOrDefaultAsync(where);
+        }
 
         public async Task<T> FindAsync(Expression<Func<T, bool>> where)
         {
             return await DbSet.FirstOrDefaultAsync(where);
+        }
+
+        public async Task<T> FindAsync(Expression<Func<T, bool>> where, IEnumerable<string> includes = null)
+        {
+            IQueryable<T> currentSet = Find(includes);
+
+            var entity = await currentSet.FirstOrDefaultAsync(where);
+
+            return entity;
         }
 
         public async Task AddAsync(T entity)

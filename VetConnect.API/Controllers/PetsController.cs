@@ -53,7 +53,7 @@ public class PetsController : BaseApiController
     }
     
     /// <summary>
-    ///     Atualiza um pet do usuário de acordo com o ID informado.
+    ///     Atualiza um pet do usuário logado de acordo com o ID do pet informado.
     /// </summary>
     [HttpPut("v1/Edit/Pet/{id:guid}")]
     public async Task<IActionResult> UpdatePet([FromRoute] Guid id, [FromBody] UpdatePetCommand command)
