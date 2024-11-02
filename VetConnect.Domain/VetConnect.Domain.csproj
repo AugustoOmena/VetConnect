@@ -9,6 +9,7 @@
     <ItemGroup>
       <Compile Remove="Class1.cs" />
       <Compile Remove="Validators\CreateUserValidator.cs" />
+      <Compile Remove="ViewModels\Services.cs" />
     </ItemGroup>
 
     <ItemGroup>
