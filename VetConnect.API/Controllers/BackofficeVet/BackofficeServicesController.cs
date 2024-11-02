@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using VetConnect.Api.Config;
 using VetConnect.Domain.Commands.Pets.Backoffice;
 using VetConnect.Domain.Contracts.Infra;
+using VetConnect.Domain.Filters;
+using VetConnect.Domain.Queries.Backoffice;
 using VetConnect.Shared.Notifications;
 using VetConnect.Shared.Security;
 
@@ -30,5 +32,20 @@ public class BackofficeServicesController : BaseApiController
         command.SessionUser = _sessionUser;
         command.PetId = id;
         return CreateResponse(await _mediator.Send(command, CancellationToken.None));
+    }
+    
+    /// <summary>
+    ///     Listagem de serviços
+    /// </summary>
+    [HttpGet("v1/Backoffice/ListAll/Services")]
+    public async Task<IActionResult> ListServicesPets([FromQuery] ListServicesHistoryFilter filter)
+    {
+        return CreateResponse(await _mediator.Send(
+            new ListServiceHistoryQuery()
+            {
+                Filter = filter,
+                SessionUser = _sessionUser
+            },
+            CancellationToken.None));
     }
 }

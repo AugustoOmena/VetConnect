@@ -1,4 +1,4 @@
-using VetConnect.Domain.Entities;
+using VetConnect.Domain.ViewModels.Pets;
 
 namespace VetConnect.Domain.ViewModels.Services;
 
@@ -12,5 +12,5 @@ public class ServiceHistoryVm
 
     public Guid PetId { get; set; }
     
-    public Pet Pet { get; set; }
+    public PetVm Pet { get; set; }
 }
