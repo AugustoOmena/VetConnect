@@ -2,6 +2,7 @@ namespace VetConnect.Domain.Entities;
 
 public class ServiceHistory: BaseEntity
 {
+    protected ServiceHistory(){}
     public string Name { get; private set; }
     public string Description { get; private set; }
     
@@ -18,4 +19,19 @@ public class ServiceHistory: BaseEntity
         Description = description;
         PetId = petId;
     }
+    
+    public static ServiceHistory New(
+        string name,
+        string description,
+        decimal price,
+        Guid petId
+    ) => new ServiceHistory
+    {
+        DateCreated = DateTime.UtcNow,
+        Id = Guid.NewGuid(),
+        Name = name,
+        Description = description,
+        Price = price,
+        PetId = petId
+    };
 }

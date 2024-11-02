@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using VetConnect.Domain.Commands.Pets;
+using VetConnect.Domain.Commands.Pets.Backoffice;
 using VetConnect.Domain.Contracts.Infra;
 using VetConnect.Infrastructure;
 
@@ -30,10 +31,12 @@ builder.Services.AddScoped<ILoggedUser, LoggedUser>();
 builder.Services.AddScoped<IDomainNotification, DomainNotification>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<IServiceHistoryRepository, ServiceHistoryRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateClientUserByVetConnectCommand>());
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateServiceByBackofficeCommand>());
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreatePetCommand>());
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<AuthorizeUserCommand>());
 
