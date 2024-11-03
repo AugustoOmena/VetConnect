@@ -62,4 +62,15 @@ public class BackofficeServicesController : BaseApiController
         };
         return CreateResponse(await _mediator.Send(command, CancellationToken.None));
     }
+    
+    /// <summary>
+    ///     Atualiza um serviço de acordo com o ID.
+    /// </summary>
+    [HttpPut("v1/Backoffice/Edit/Service/{id:guid}")]
+    public async Task<IActionResult> UpdateServiceById([FromRoute] Guid id, [FromBody] UpdateServiceCommand command)
+    {
+        command.Id = id;
+        command.SessionUser = _sessionUser;
+        return CreateResponse(await _mediator.Send(command, CancellationToken.None));
+    }
 }

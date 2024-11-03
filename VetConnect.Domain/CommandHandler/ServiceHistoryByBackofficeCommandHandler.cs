@@ -18,7 +18,8 @@ namespace VetConnect.Domain.CommandHandler;
 public class ServiceHistoryByBackofficeCommandHandler: BaseCommandHandler,
     IRequestHandler<CreateServiceByBackofficeCommand, BaseServiceHistoryResult>,
     IRequestHandler<ListServiceHistoryQuery, PagedList<ServiceHistoryVm>>,
-    IRequestHandler<DeleteServiceCommand, BaseServiceHistoryResult>
+    IRequestHandler<DeleteServiceCommand, BaseServiceHistoryResult>,
+    IRequestHandler<UpdateServiceCommand, BaseServiceHistoryResult>
 {
     private readonly IPetRepository _petRepository;
     private readonly IUserRepository _userRepository;
@@ -140,6 +141,34 @@ public class ServiceHistoryByBackofficeCommandHandler: BaseCommandHandler,
         
         result.Success = true;
         result.Message = "Exclusão feita com sucesso";
+        return result;
+    }
+
+    public async Task<BaseServiceHistoryResult> Handle(UpdateServiceCommand command, CancellationToken cancellationToken)
+    {
+        var result = new BaseServiceHistoryResult();
+        var service = await _serviceHistoryRepository.FindAsync(x => x.Id == command.Id && x.DateDeleted == null);
+        
+        if (service == null)
+        {
+            Notifications.Handle("Pet não encontrado");
+            return result;
+        }
+        
+        service.Update(
+            command.Name,
+            command.Description,
+            command.Price
+            );
+        
+        if (!await CommitAsync())
+        {
+            Notifications.Handle("Houve um probema ao salvar as informações");
+            return result;
+        }
+        
+        result.Success = true;
+        result.Message = "Edição feita com sucesso";
         return result;
     }
 }

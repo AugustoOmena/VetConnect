@@ -35,6 +35,18 @@ public class ServiceHistory: BaseEntity
         PetId = petId
     };
     
+    public void Update(
+        string name,
+        string description,
+        decimal price
+    )
+    {
+        DateUppdated = DateTime.UtcNow;
+        Name = name;
+        Description = description;
+        Price = price;
+    }
+    
     public void Delete()
     {
         DateDeleted = DateTime.UtcNow;
