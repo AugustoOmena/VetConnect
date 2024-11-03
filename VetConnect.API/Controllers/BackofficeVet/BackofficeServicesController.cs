@@ -48,4 +48,18 @@ public class BackofficeServicesController : BaseApiController
             },
             CancellationToken.None));
     }
+    
+    /// <summary>
+    ///     Deleta(desativa) um serviço do pet de acordo com o ID informado.
+    /// </summary>
+    [HttpDelete("v1/Backoffice/Delete/Service/{id:guid}")]
+    public async Task<IActionResult> DeleteServiceById([FromRoute] Guid id)
+    {
+        var command = new DeleteServiceCommand()
+        {
+            Id = id,
+            SessionUser = _sessionUser
+        };
+        return CreateResponse(await _mediator.Send(command, CancellationToken.None));
+    }
 }

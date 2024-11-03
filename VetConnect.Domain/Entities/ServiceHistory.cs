@@ -34,4 +34,9 @@ public class ServiceHistory: BaseEntity
         Price = price,
         PetId = petId
     };
+    
+    public void Delete()
+    {
+        DateDeleted = DateTime.UtcNow;
+    }
 }
