@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using VetConnect.Domain.Entities;
 using VetConnect.Shared.Paging;
 
@@ -12,8 +13,12 @@ public class ListServicesHistoryFilter : Pagination
     public decimal HighestPrice { get; set; }
     
     public decimal LowestPrice { get; set; }
+    
+    public string? PetOwnerName { get; set; }
 
+    [JsonIgnore]
     public Guid PetId { get; set; }
     
+    [JsonIgnore]
     public Pet Pet { get; set; }
 }

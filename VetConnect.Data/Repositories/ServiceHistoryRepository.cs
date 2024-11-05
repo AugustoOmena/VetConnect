@@ -35,13 +35,9 @@ public class ServiceHistoryRepository: Repository<ServiceHistory>, IServiceHisto
             ? predicate
             : predicate.And(x => x.Description.ToLower().Contains(filter.Description.ToLower()));
         
-        predicate = (filter.Pet.Name == null)
+        predicate = (filter.PetOwnerName == null)
             ? predicate
-            : predicate.And(x => x.Pet.Name.ToLower().Contains(filter.Pet.Name.ToLower()));
-
-        predicate = (filter.Pet.User.FirstName == null)
-            ? predicate
-            : predicate.And(x => (x.Pet.User.FirstName.ToLower() + " " + x.Pet.User.LastName.ToLower()).Contains(filter.Pet.User.FirstName.ToLower()));
+            : predicate.And(x => (x.Pet.User.FirstName.ToLower() + " " + x.Pet.User.LastName.ToLower()).Contains(filter.PetOwnerName.ToLower()));
         
         predicate = (filter.LowestPrice != 0 && filter.LowestPrice > 0)
             ? predicate.And(x => x.Price >= filter.LowestPrice)
