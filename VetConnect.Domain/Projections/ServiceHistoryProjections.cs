@@ -7,6 +7,7 @@ public static class ServiceHistoryProjections
 {
     public static ServiceHistoryVm ToVm(this ServiceHistory serviceHistory) => new ServiceHistoryVm()
     {
+        Id = serviceHistory.Id,
         Name = serviceHistory.Name,
         Price = serviceHistory.Price,
         Description = serviceHistory.Description,
