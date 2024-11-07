@@ -102,5 +102,19 @@ public class BackofficePetsController : BaseApiController
         return CreateResponse(response);
     }
     
-    
+    /// <summary>
+    /// (Backoffice) Obtém lista paginada de pets do usuário informado
+    /// </summary>
+    [HttpGet("v1/Backoffice/Pets/User/{id:guid}")]
+    public async Task<IActionResult> ListUserPets([FromRoute] Guid id, [FromQuery] ListUserPetsFilter filter)
+    {
+        return CreateResponse(await _mediator.Send(
+            new ListPetsByUserIdQuery()
+            {
+                Filter = filter,
+                Id = id,
+                SessionUser = _sessionUser
+            },
+            CancellationToken.None));
+    }
 }

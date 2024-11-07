@@ -15,7 +15,8 @@ namespace VetConnect.Domain.QueryHandlers;
 public class UsersByBackofficeQueryHandler : BaseQueryHandler,
     IRequestHandler<UsersByBackofficeQuery, PagedList<UserVm>>,
     IRequestHandler<UserByBackofficeQuery, UserVm>,
-    IRequestHandler<PetByIdBackofficeQuery, PetVm>
+    IRequestHandler<PetByIdBackofficeQuery, PetVm>,
+    IRequestHandler<ListPetsByUserIdQuery, PagedList<PetVm>>
 
 {
     private readonly IUserRepository _userRepository;
@@ -70,5 +71,18 @@ public class UsersByBackofficeQueryHandler : BaseQueryHandler,
             .FindAsync(x => x.Id == query.Id && x.DateDeleted == null, includes);
         
         return result.ToVm();
+    }
+
+    public async Task<PagedList<PetVm>> Handle(ListPetsByUserIdQuery query, CancellationToken cancellationToken)
+    {
+        var where = _petRepository.Where(query);
+            
+        var count = await _petRepository.CountAsync(where);
+        
+        var pets = _petRepository
+            .ListAsNoTracking(where, query.Filter, null)
+            .ToVm();
+        
+        return new PagedList<PetVm>(pets, count, query.Filter.PageSize);
     }
 }

@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using VetConnect.Data.Utils;
 using VetConnect.Domain.Contracts.Repositories;
 using VetConnect.Domain.Entities;
+using VetConnect.Domain.Queries.Backoffice;
 using VetConnect.Domain.Queries.Users;
 using VetConnect.Shared.Utils;
 
@@ -39,6 +40,17 @@ public class PetRepository : Repository<Pet>, IPetRepository
         predicate = (query.Filter.EndAgeDate == null)
             ? predicate
             : predicate.And(x => x.BirthDate <= query.Filter.EndAgeDate);
+        
+        return predicate;
+    }
+
+    public Expression<Func<Pet, bool>> Where(ListPetsByUserIdQuery query)
+    {
+        var predicate = PredicateBuilder.True<Pet>();
+
+        predicate = (query.Id == null)
+            ? predicate
+            : predicate.And(x => x.UserId == query.Id);
         
         return predicate;
     }
