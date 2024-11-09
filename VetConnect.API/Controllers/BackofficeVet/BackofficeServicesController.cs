@@ -66,7 +66,7 @@ public class BackofficeServicesController : BaseApiController
     /// <summary>
     ///     Atualiza um serviço de acordo com o ID.
     /// </summary>
-    [HttpPut("v1/Backoffice/Edit/Service/{id:guid}")]
+    [HttpPatch("v1/Backoffice/Edit/Service/{id:guid}")]
     public async Task<IActionResult> UpdateServiceById([FromRoute] Guid id, [FromBody] UpdateServiceCommand command)
     {
         command.Id = id;

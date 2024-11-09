@@ -65,6 +65,7 @@ public class UsersByBackofficeQueryHandler : BaseQueryHandler,
     public async Task<PetVm> Handle(PetByIdBackofficeQuery query, CancellationToken cancellationToken)
     {
         var includes = new IncludeHelper<Pet>()
+            .Include(x => x.User)
             .Includes;
         
         var result = await _petRepository
@@ -79,8 +80,12 @@ public class UsersByBackofficeQueryHandler : BaseQueryHandler,
             
         var count = await _petRepository.CountAsync(where);
         
+        var includes = new IncludeHelper<Pet>()
+            .Include(x => x.User)
+            .Includes;
+        
         var pets = _petRepository
-            .ListAsNoTracking(where, query.Filter, null)
+            .ListAsNoTracking(where, query.Filter, includes)
             .ToVm();
         
         return new PagedList<PetVm>(pets, count, query.Filter.PageSize);

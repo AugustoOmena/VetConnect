@@ -53,7 +53,7 @@ public class BackofficePetsController : BaseApiController
     /// <summary>
     ///     Atualiza um Pet para um usuário a partir do id do pet
     /// </summary>
-    [HttpPut("v1/Backoffice/Edit/Pet/{id:guid}")]
+    [HttpPatch("v1/Backoffice/Edit/Pet/{id:guid}")]
     public async Task<IActionResult> UpdatePet([FromRoute] Guid id, [FromBody] UpdatePetCommand command)
     {
         command.Id = id;

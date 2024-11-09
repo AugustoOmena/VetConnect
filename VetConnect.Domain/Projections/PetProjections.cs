@@ -12,6 +12,7 @@ public static class PetProjections
         PetType = pet.PetType,
         Race = pet.Race,
         BirthDate = pet.BirthDate,
+        UserName = (pet.User.FirstName + " " + pet.User.LastName),
         UserId = pet.UserId
     };
     

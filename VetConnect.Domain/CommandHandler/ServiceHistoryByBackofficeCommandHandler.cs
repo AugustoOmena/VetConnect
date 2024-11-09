@@ -109,9 +109,10 @@ public class ServiceHistoryByBackofficeCommandHandler: BaseCommandHandler,
         
         var includes = new IncludeHelper<ServiceHistory>()
             .Include(x => x.Pet)
+            .Include(x => x.Pet.User)
             .Includes;
         
-        var count = _serviceHistoryRepository.ListAsNoTracking(where, query.Filter);
+        var count = _serviceHistoryRepository.ListAsNoTracking(where, query.Filter, includes);
         
         var services = _serviceHistoryRepository
             .ListAsNoTracking(where, query.Filter, includes)
@@ -151,7 +152,7 @@ public class ServiceHistoryByBackofficeCommandHandler: BaseCommandHandler,
         
         if (service == null)
         {
-            Notifications.Handle("Pet não encontrado");
+            Notifications.Handle("Serviço não encontrado");
             return result;
         }
         
