@@ -27,12 +27,12 @@ public class BackofficePetsController : BaseApiController
     /// </summary>
     [HttpPost]
     [Route("v1/Backoffice/Create/Pet/ToUser/{id}")]
-    public async Task<IActionResult> CreatePet([FromRoute] Guid id, [FromBody] CreatePetByBackofficeCommand command,
+    public async Task<IActionResult> CreatePet([FromRoute] Guid id, [FromBody] CreatePetByBackofficeCommand byBackofficeCommand,
         CancellationToken cancellationToken)
     {
-        command.SessionUser = _sessionUser;
-        command.UserId = id;
-        return CreateResponse(await _mediator.Send(command, CancellationToken.None));
+        byBackofficeCommand.SessionUser = _sessionUser;
+        byBackofficeCommand.UserId = id;
+        return CreateResponse(await _mediator.Send(byBackofficeCommand, CancellationToken.None));
     }
     
     /// <summary>

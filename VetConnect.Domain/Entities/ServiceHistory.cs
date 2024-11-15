@@ -11,6 +11,10 @@ public class ServiceHistory: BaseEntity
     // Relacionamento N:1 - Um ServiceHistory pertence a um único Pet
     public Guid PetId { get; private set; }
     public Pet Pet { get; private set; }
+    
+    // Relacionamento N:1 - Um ServiceHistory pertence a um agendamento
+    public Guid SchedulingId { get; private set; }
+    public Scheduling Scheduling { get; private set; }
 
     public ServiceHistory(string description, string name, decimal price, Guid petId)
     {

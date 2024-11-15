@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using VetConnect.Shared.Constants;
+using VetConnect.Shared.Enums;
 
 namespace VetConnect.Shared.Security;
 
@@ -11,7 +12,7 @@ namespace VetConnect.Shared.Security;
         
         public string? Name { get; set; }
         
-        // public EUserType? UserType { get; set; }
+        public EUserType? UserType { get; set; }
 
         public static SessionUser User(IEnumerable<Claim> claims)
         {
@@ -26,13 +27,13 @@ namespace VetConnect.Shared.Security;
                 .FirstOrDefault(x => x.Type == CustomClaims.Name || x.Type == ClaimTypes.Name)?.Value;
             
             sessionUser.Id = Guid.Parse(claimsArray.First(x => x.Type == ClaimTypes.NameIdentifier).Value);
-            //
-            // if (claimsArray.Any(x => x.Type == CustomClaims.UserType &&
-            //                          !string.IsNullOrWhiteSpace(x.Value)) &&
-            //     Enum.TryParse<EUserType>(claimsArray.First(x => x.Type == CustomClaims.UserType).Value, out var userType))
-            // {
-            //     sessionUser.UserType = userType;
-            // }
+            
+            if (claimsArray.Any(x => x.Type == CustomClaims.UserType &&
+                                     !string.IsNullOrWhiteSpace(x.Value)) &&
+                Enum.TryParse<EUserType>(claimsArray.First(x => x.Type == CustomClaims.UserType).Value, out var userType))
+            {
+                sessionUser.UserType = userType;
+            }
             
             //TODO SysAdmin claims
             
@@ -46,10 +47,10 @@ namespace VetConnect.Shared.Security;
             claims.Add(new Claim(CustomClaims.Email, Email));
             claims.Add(new Claim(CustomClaims.Name, Name ?? ""));
             
-            // if (UserType != null)
-            // {
-            //     claims.Add(new Claim(CustomClaims.UserType, UserType.ToString()));
-            // }
+            if (UserType != null)
+            {
+                claims.Add(new Claim(CustomClaims.UserType, UserType.ToString()));
+            }
             // if (UserType.HasValue)
             // {
             //     claims.Add(new Claim(CustomClaims.UserType, UserType.Value.ToString()));

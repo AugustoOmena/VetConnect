@@ -38,10 +38,7 @@ public class ServiceHistoryByBackofficeCommandHandler: BaseCommandHandler,
         
         var validator = new CreateServiceHistoryValidator();
         
-        // Solução provisória, o ideal é buscar o tipo de usuário por Claim
-        var sessionUser = await _userRepository.FindAsync(x => x.Id == request.SessionUser.Id && x.DateDeleted == null);
-
-        if (sessionUser.UserType is not (EUserType.BackOffice or EUserType.Admin) )
+        if (request.SessionUser.UserType is not (EUserType.Getente or EUserType.Veterinário) )
         {
             Notifications.Handle("Usuário não tem autorização.");
             return response;
@@ -96,10 +93,7 @@ public class ServiceHistoryByBackofficeCommandHandler: BaseCommandHandler,
 
     public async Task<PagedList<ServiceHistoryVm>> Handle(ListServiceHistoryQuery query, CancellationToken cancellationToken)
     {
-        // Solução provisória, o ideal é buscar o tipo de usuário por Claim
-        var sessionUser = await _userRepository.FindAsync(x => x.Id == query.SessionUser.Id && x.DateDeleted == null);
-
-        if (sessionUser.UserType is not (EUserType.BackOffice or EUserType.Admin) )
+        if (query.SessionUser.UserType is not (EUserType.Veterinário or EUserType.Getente) )
         {
             Notifications.Handle("Usuário não tem autorização.");
             return null;

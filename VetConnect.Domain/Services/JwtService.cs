@@ -32,6 +32,7 @@ public class JwtService : IJwtService
                 new Claim(JwtRegisteredClaimNames.UniqueName, user.FirstName.ToString() + user.LastName.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email.ToString()),
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Profile, user.UserType.ToString())
             }),
             Expires = DateTime.UtcNow.AddHours(2),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

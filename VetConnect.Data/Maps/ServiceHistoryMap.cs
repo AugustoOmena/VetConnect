@@ -30,10 +30,9 @@ internal class ServiceHistoryMap : IEntityTypeConfiguration<ServiceHistory>
         builder.Property(x => x.PetId)
             .IsRequired();
 
-        // Relacionamento N:1 - Um ServiceHistory pertence a um único Pet
-        builder.HasOne(sh => sh.Pet)
-            .WithMany(p => p.ServiceHistories)
-            .HasForeignKey(sh => sh.PetId)
+        // Relacionamento N:1 - Um ServiceHistory pertence a um agendamento
+        builder.HasOne(sh => sh.Scheduling)
+            .WithOne(p => p.ServiceHistory)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

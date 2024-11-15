@@ -5,7 +5,6 @@ using VetConnect.Domain.Contracts.Repositories;
 using VetConnect.Domain.Entities;
 using VetConnect.Domain.Results.Pet;
 using VetConnect.Domain.Validators;
-using VetConnect.Shared.Enums;
 using VetConnect.Shared.Notifications;
 using VetConnect.Shared.Persistence;
 
@@ -25,18 +24,11 @@ public class PetByBackofficeCommandHandler : BaseCommandHandler,
 
     public async Task<BasePetResult> Handle(CreatePetByBackofficeCommand request, CancellationToken cancellationToken)
     {
+        // Obs: Liberado para requisições de qualquer tipo de usuário logado. Ideal atualizar método e endpoint
+        
         var response = new BasePetResult();
         
         var validator = new CreatePetValidator();
-        
-        // Solução provisória, o ideal é buscar o tipo de usuário por Claim
-        var sessionUser = await _userRepository.FindAsync(x => x.Id == request.SessionUser.Id && x.DateDeleted == null);
-
-        if (sessionUser.UserType is not (EUserType.BackOffice or EUserType.Admin) )
-        {
-            Notifications.Handle("Usuário não tem autorização.");
-            return response;
-        }
         
         var user = await _userRepository.FindAsync(x => x.Id == request.UserId && x.DateDeleted == null);
 

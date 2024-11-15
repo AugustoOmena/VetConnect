@@ -30,10 +30,7 @@ public class UsersByBackofficeQueryHandler : BaseQueryHandler,
 
     public async Task<PagedList<UserVm>> Handle(UsersByBackofficeQuery query, CancellationToken cancellationToken)
     {
-        // Solução provisória, o ideal é buscar o tipo de usuário por Claim
-        var sessionUser = await _userRepository.FindAsync(x => x.Id == query.SessionUser.Id && x.DateDeleted == null);
-
-        if (sessionUser.UserType is not (EUserType.BackOffice or EUserType.Admin) )
+        if (query.SessionUser.UserType is not (EUserType.Getente or EUserType.Atendente) )
         {
             Notifications.Handle("Usuário não tem autorização.");
             return null;

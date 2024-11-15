@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using VetConnect.Persistence.Context;
@@ -11,9 +12,11 @@ using VetConnect.Persistence.Context;
 namespace VetConnect.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241114224915_AddSchedulingAndAttendanceTables")]
+    partial class AddSchedulingAndAttendanceTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,7 +68,7 @@ namespace VetConnect.Persistence.Migrations
                     b.HasIndex("SchedulingId")
                         .IsUnique();
 
-                    b.ToTable("Attendance", (string)null);
+                    b.ToTable("Attendance");
                 });
 
             modelBuilder.Entity("VetConnect.Domain.Entities.Pet", b =>
@@ -104,7 +107,7 @@ namespace VetConnect.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Pets", (string)null);
+                    b.ToTable("Pets");
                 });
 
             modelBuilder.Entity("VetConnect.Domain.Entities.Scheduling", b =>
@@ -150,7 +153,7 @@ namespace VetConnect.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Scheduling", (string)null);
+                    b.ToTable("Scheduling");
                 });
 
             modelBuilder.Entity("VetConnect.Domain.Entities.ServiceHistory", b =>
@@ -192,7 +195,7 @@ namespace VetConnect.Persistence.Migrations
                     b.HasIndex("SchedulingId")
                         .IsUnique();
 
-                    b.ToTable("ServiceHistories", (string)null);
+                    b.ToTable("ServiceHistories");
                 });
 
             modelBuilder.Entity("VetConnect.Domain.Entities.User", b =>
@@ -233,7 +236,7 @@ namespace VetConnect.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("VetConnect.Domain.Entities.Attendance", b =>
