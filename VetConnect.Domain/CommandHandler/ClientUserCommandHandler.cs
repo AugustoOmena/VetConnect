@@ -9,6 +9,7 @@ using VetConnect.Domain.Results.Auth;
 using VetConnect.Domain.Results.UserClient;
 using VetConnect.Domain.Services.Contracts;
 using VetConnect.Domain.Validators;
+using VetConnect.Shared.Security;
 
 namespace VetConnect.Domain.CommandHandler;
 
@@ -74,9 +75,19 @@ public class ClientUserCommandHandler : BaseCommandHandler,
         }
 
         var user = await _userRepository.FindAsync(x => x.Email.ToLower() == command.Email.ToLower() && x.Password == command.Password);
-
+        
+        var sessionUser = new SessionUser
+        {
+            Id = user.Id,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Email = user.Email,
+            UserType = user.UserType
+        };
+        
         if (user is not null)
         {
+            response.User = sessionUser;
             response.AccessToken = _jwtService.GenerateToken(user);
             response.Success = true;
             return (response);

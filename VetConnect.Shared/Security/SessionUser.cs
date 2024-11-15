@@ -10,7 +10,9 @@ namespace VetConnect.Shared.Security;
         
         public string? Email { get; set; }
         
-        public string? Name { get; set; }
+        public string? FirstName { get; set; }
+        
+        public string? LastName { get; set; }
         
         public EUserType? UserType { get; set; }
 
@@ -23,8 +25,11 @@ namespace VetConnect.Shared.Security;
             sessionUser.Email = claimsArray
                 .FirstOrDefault(x => x.Type == CustomClaims.Email || x.Type == ClaimTypes.Email)?.Value;
 
-            sessionUser.Name = claimsArray
-                .FirstOrDefault(x => x.Type == CustomClaims.Name || x.Type == ClaimTypes.Name)?.Value;
+            sessionUser.FirstName = claimsArray
+                .FirstOrDefault(x => x.Type == CustomClaims.FirstName || x.Type == ClaimTypes.Name)?.Value;
+            
+            sessionUser.LastName = claimsArray
+                .FirstOrDefault(x => x.Type == CustomClaims.LastName || x.Type == ClaimTypes.Name)?.Value;
             
             sessionUser.Id = Guid.Parse(claimsArray.First(x => x.Type == ClaimTypes.NameIdentifier).Value);
             
@@ -45,7 +50,8 @@ namespace VetConnect.Shared.Security;
             var claims = new List<Claim>();
             claims.Add(new Claim(CustomClaims.Id, Id.ToString()));
             claims.Add(new Claim(CustomClaims.Email, Email));
-            claims.Add(new Claim(CustomClaims.Name, Name ?? ""));
+            claims.Add(new Claim(CustomClaims.FirstName, FirstName ?? ""));
+            claims.Add(new Claim(CustomClaims.LastName, LastName ?? ""));
             
             if (UserType != null)
             {
