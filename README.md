@@ -6,12 +6,15 @@
   <img src="https://img.shields.io/badge/Architecture-Layered-orange" alt="Architecture">
 </p>
 
-Fala pessoal! Esse é o nosso projeto integrador do Senac EAD. Essa é a nossa API, que terá toda a regra de negócios de nosso projeto.
+API do projeto VetConnect, é um app para clinicas veterinárias e PetShops, aqui o cliente terá acesso fácil a seus serviços.
+
+Esse projeto incluí um Frontend em Angular 18: https://github.com/AugustoOmena/Frontend-VetConnect
 
 Seguindo os passos listados voce deve conseguir usar o projeto sem muitas dificuldades. Caso tenha dificuldades estou a disposição para ajudar.
 
 Estado Atual:
-![image](https://github.com/user-attachments/assets/937b3ac5-eca2-47bb-85e0-5ee85a55c03d)
+![image](https://github.com/user-attachments/assets/a52854e9-ebaa-4f24-8523-3d5752152f55)
+
 
 ## Pré requisitos
 
