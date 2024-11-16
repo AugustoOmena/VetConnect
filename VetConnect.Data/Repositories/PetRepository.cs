@@ -27,7 +27,10 @@ public class PetRepository : Repository<Pet>, IPetRepository
 
         predicate = predicate.And(x => x.DateDeleted == null);
 
-        predicate = predicate.And(x => x.UserId == query.SessionUser.Id);
+        if (query.SessionUser.UserType != null)
+        {
+            predicate = predicate.And(x => x.UserId == query.SessionUser.Id);
+        }
         
         predicate = (query.Filter.Name == null)
             ? predicate

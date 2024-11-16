@@ -10,6 +10,5 @@ public sealed class CreatePetValidator : AbstractValidator<CreatePetCommand>
         RuleFor(x => x.Name).NotEmpty().MinimumLength(3).MaximumLength(50);
         RuleFor(x => x.BirthDate).NotEmpty();
         RuleFor(x => x.Race).NotEmpty();
-        RuleFor(x => x.PetType).NotEmpty();
     }
 }

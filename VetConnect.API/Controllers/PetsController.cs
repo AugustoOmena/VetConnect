@@ -40,7 +40,7 @@ public class PetsController : BaseApiController
     /// <summary>
     ///     Obtém lista de pets do usuário logado.
     /// </summary>
-    [HttpGet("v1/List/Pets")]
+    [HttpGet("v1/List/LoggedUser/Pets")]
     public async Task<IActionResult> ListUserPets([FromQuery] ListUserPetsFilter filter)
     {
         return CreateResponse(await _mediator.Send(
@@ -55,12 +55,16 @@ public class PetsController : BaseApiController
     /// <summary>
     ///     Atualiza um pet do usuário logado de acordo com o ID do pet informado.
     /// </summary>
-    [HttpPut("v1/Edit/Pet/{id:guid}")]
-    public async Task<IActionResult> UpdatePet([FromRoute] Guid id, [FromBody] UpdatePetCommand command)
+    [HttpPatch("v1/Edit/Pet/{id:guid}")]
+    public async Task<IActionResult> UpdatePet([FromRoute] Guid? id)
     {
-        command.Id = id;
-        command.SessionUser = _sessionUser;
-        return CreateResponse(await _mediator.Send(command, CancellationToken.None));
+        return CreateResponse(await _mediator.Send(
+            new UpdatePetCommand()
+            {
+                Id = id,
+                SessionUser = _sessionUser
+            },
+            CancellationToken.None));
     }
     
     /// <summary>
