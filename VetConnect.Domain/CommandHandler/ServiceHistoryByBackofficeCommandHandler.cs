@@ -37,28 +37,20 @@ public class ServiceHistoryByBackofficeCommandHandler: BaseCommandHandler,
         var response = new BaseServiceHistoryResult();
         
         var validator = new CreateServiceHistoryValidator();
+        var user = await _userRepository.FindAsync(x => x.Id == request.SessionUser.Id && x.DateDeleted == null);
         
-        if (request.SessionUser.UserType is not (EUserType.Getente or EUserType.Veterinário) )
+        if (user.UserType is not (EUserType.Veterinário or EUserType.Getente))
         {
             Notifications.Handle("Usuário não tem autorização.");
-            return response;
+            return null;
         }
         
-        var pet = await _petRepository.FindAsync(x => x.Id == request.PetId && x.DateDeleted == null);
-
-        if (pet is null)
-        {
-            Notifications.Handle("Pet não encontrado");
-            return response;
-        }
-
         //essa intância foi criada para garantir que os dados são válidos
         var newPetRequest = new CreateServiceByBackofficeCommand()
         {
             Name = request.Name,
             Description = request.Description,
-            Pet = request.Pet,
-            PetId = request.PetId,
+            ServiceType = request.ServiceType,
             Price = request.Price,
             SessionUser = request.SessionUser
         };
@@ -75,7 +67,7 @@ public class ServiceHistoryByBackofficeCommandHandler: BaseCommandHandler,
             request.Name,
             request.Description,
             request.Price,
-            request.PetId
+            request.ServiceType
             );
 
         await _serviceHistoryRepository.AddServiceAsync(newService);
@@ -93,7 +85,9 @@ public class ServiceHistoryByBackofficeCommandHandler: BaseCommandHandler,
 
     public async Task<PagedList<ServiceHistoryVm>> Handle(ListServiceHistoryQuery query, CancellationToken cancellationToken)
     {
-        if (query.SessionUser.UserType is not (EUserType.Veterinário or EUserType.Getente) )
+        var user = await _userRepository.FindAsync(x => x.Id == query.SessionUser.Id && x.DateDeleted == null);
+        
+        if (user.UserType is not (EUserType.Veterinário or EUserType.Getente))
         {
             Notifications.Handle("Usuário não tem autorização.");
             return null;
@@ -102,8 +96,6 @@ public class ServiceHistoryByBackofficeCommandHandler: BaseCommandHandler,
         var where = _serviceHistoryRepository.Where(query.Filter);
         
         var includes = new IncludeHelper<ServiceHistory>()
-            .Include(x => x.Pet)
-            .Include(x => x.Pet.User)
             .Includes;
         
         var count = _serviceHistoryRepository.ListAsNoTracking(where, query.Filter, includes);

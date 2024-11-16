@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using VetConnect.Api.Config;
+using VetConnect.Domain.Commands.Scheduling;
 using VetConnect.Domain.Contracts.Infra;
 using VetConnect.Domain.Filters;
 using VetConnect.Domain.Queries.Users;
@@ -21,7 +22,7 @@ public class SchedulingController : BaseApiController
     }
     
     /// <summary>
-    ///     Listagem de usuários
+    ///     Listagem de agendamentos
     /// </summary>
     [HttpGet("v1/Commom/Scheduling/List")]
     public async Task<IActionResult> ListUserPets([FromQuery] ListSchedulingFilter filter)
@@ -34,4 +35,18 @@ public class SchedulingController : BaseApiController
             },
             CancellationToken.None));
     }
+    
+    
+    /// <summary>
+    ///     Cria um novo Agendamento
+    /// </summary>
+    [HttpPost]
+    [Route("v1/Common/Create/Scheduling/Pet/{id}")]
+    public async Task<IActionResult> CreateServiceToPet([FromRoute] Guid id, [FromBody] CreateSchedulingByUserCommand command)
+    {
+        command.SessionUser = _sessionUser;
+        command.PetId = id;
+        return CreateResponse(await _mediator.Send(command, CancellationToken.None));
+    }
+    
 }

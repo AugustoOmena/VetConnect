@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using VetConnect.Persistence.Context;
@@ -11,9 +12,11 @@ using VetConnect.Persistence.Context;
 namespace VetConnect.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241116125003_Entity_Relationship_Adjustment")]
+    partial class Entity_Relationship_Adjustment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,7 +60,7 @@ namespace VetConnect.Persistence.Migrations
                     b.HasIndex("SchedulingId")
                         .IsUnique();
 
-                    b.ToTable("Attendances");
+                    b.ToTable("Attendance");
                 });
 
             modelBuilder.Entity("VetConnect.Domain.Entities.Pet", b =>
@@ -127,9 +130,6 @@ namespace VetConnect.Persistence.Migrations
                     b.Property<Guid>("PetId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("ServiceHistoryId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid>("ServiceId")
                         .HasColumnType("uuid");
 
@@ -137,9 +137,7 @@ namespace VetConnect.Persistence.Migrations
 
                     b.HasIndex("PetId");
 
-                    b.HasIndex("ServiceHistoryId");
-
-                    b.ToTable("Schedulings");
+                    b.ToTable("Scheduling");
                 });
 
             modelBuilder.Entity("VetConnect.Domain.Entities.ServiceHistory", b =>
@@ -165,18 +163,21 @@ namespace VetConnect.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("PetId")
+                    b.Property<Guid>("PetId")
                         .HasColumnType("uuid");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("ServiceType")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("SchedulingId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PetId");
+
+                    b.HasIndex("SchedulingId")
+                        .IsUnique();
 
                     b.ToTable("ServiceHistories");
                 });
@@ -252,22 +253,26 @@ namespace VetConnect.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("VetConnect.Domain.Entities.ServiceHistory", "ServiceHistory")
-                        .WithMany()
-                        .HasForeignKey("ServiceHistoryId")
+                    b.Navigation("Pet");
+                });
+
+            modelBuilder.Entity("VetConnect.Domain.Entities.ServiceHistory", b =>
+                {
+                    b.HasOne("VetConnect.Domain.Entities.Pet", "Pet")
+                        .WithMany("ServiceHistories")
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VetConnect.Domain.Entities.Scheduling", "Scheduling")
+                        .WithOne("ServiceHistory")
+                        .HasForeignKey("VetConnect.Domain.Entities.ServiceHistory", "SchedulingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Pet");
 
-                    b.Navigation("ServiceHistory");
-                });
-
-            modelBuilder.Entity("VetConnect.Domain.Entities.ServiceHistory", b =>
-                {
-                    b.HasOne("VetConnect.Domain.Entities.Pet", null)
-                        .WithMany("ServiceHistories")
-                        .HasForeignKey("PetId");
+                    b.Navigation("Scheduling");
                 });
 
             modelBuilder.Entity("VetConnect.Domain.Entities.Pet", b =>
@@ -278,6 +283,9 @@ namespace VetConnect.Persistence.Migrations
             modelBuilder.Entity("VetConnect.Domain.Entities.Scheduling", b =>
                 {
                     b.Navigation("Attendance")
+                        .IsRequired();
+
+                    b.Navigation("ServiceHistory")
                         .IsRequired();
                 });
 

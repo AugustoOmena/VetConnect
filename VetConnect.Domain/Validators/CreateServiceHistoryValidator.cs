@@ -9,7 +9,6 @@ public sealed class CreateServiceHistoryValidator : AbstractValidator<CreateServ
     {
         RuleFor(x => x.Name).NotEmpty().MinimumLength(3).MaximumLength(50);
         RuleFor(x => x.Description).NotEmpty().MinimumLength(3).MaximumLength(50);
-        RuleFor(x => x.PetId).NotEmpty();
         RuleFor(x => x.Price).NotEmpty();
     }
 }

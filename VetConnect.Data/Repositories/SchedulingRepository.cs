@@ -27,7 +27,7 @@ public class SchedulingRepository: Repository<Scheduling>, IScheduling
 
         predicate = predicate.And(x => x.DateDeleted == null);
 
-        predicate = predicate.And(x => x.UserId == query.SessionUser.Id);
+        predicate = predicate.And(x => x.Pet.UserId == query.SessionUser.Id);
         
         predicate = (query.Filter.Description == null)
             ? predicate
@@ -50,7 +50,7 @@ public class SchedulingRepository: Repository<Scheduling>, IScheduling
 
         predicate = (query.Id == null)
             ? predicate
-            : predicate.And(x => x.UserId == query.Id);
+            : predicate.And(x => x.Pet.UserId == query.Id);
         
         return predicate;
     }

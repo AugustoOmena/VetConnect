@@ -22,15 +22,14 @@ public class BackofficeServicesController : BaseApiController
     }
     
     /// <summary>
-    ///     Cria um novo Serviço para o Pet com o Id do Pet
+    ///     Cria um novo Serviço
     /// </summary>
     [HttpPost]
-    [Route("v1/Backoffice/Create/ServiceByPetId/{id}")]
-    public async Task<IActionResult> CreateServiceToPet([FromRoute] Guid id, [FromBody] CreateServiceByBackofficeCommand command,
+    [Route("v1/Backoffice/Create/ServiceHistory")]
+    public async Task<IActionResult> CreateServiceToPet([FromBody] CreateServiceByBackofficeCommand command,
         CancellationToken cancellationToken)
     {
         command.SessionUser = _sessionUser;
-        command.PetId = id;
         return CreateResponse(await _mediator.Send(command, CancellationToken.None));
     }
     

@@ -1,3 +1,5 @@
+using VetConnect.Shared.Enums;
+
 namespace VetConnect.Domain.Entities;
 
 public class ServiceHistory: BaseEntity
@@ -8,27 +10,21 @@ public class ServiceHistory: BaseEntity
     
     public decimal Price { get; private set; }
 
-    // Relacionamento N:1 - Um ServiceHistory pertence a um único Pet
-    public Guid PetId { get; private set; }
-    public Pet Pet { get; private set; }
-    
-    // Relacionamento N:1 - Um ServiceHistory pertence a um agendamento
-    public Guid SchedulingId { get; private set; }
-    public Scheduling Scheduling { get; private set; }
+    public EServiceType ServiceType { get; private set; }
 
-    public ServiceHistory(string description, string name, decimal price, Guid petId)
+    public ServiceHistory(string description, string name, decimal price,  EServiceType serviceType)
     {
         Name = name;
         Price = price;
         Description = description;
-        PetId = petId;
+        ServiceType = serviceType;
     }
     
     public static ServiceHistory New(
         string name,
         string description,
         decimal price,
-        Guid petId
+        EServiceType serviceType
     ) => new ServiceHistory
     {
         DateCreated = DateTime.UtcNow,
@@ -36,7 +32,7 @@ public class ServiceHistory: BaseEntity
         Name = name,
         Description = description,
         Price = price,
-        PetId = petId
+        ServiceType = serviceType
     };
     
     public void Update(

@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using VetConnect.Domain.Entities;
+using VetConnect.Shared.Enums;
 using VetConnect.Shared.Paging;
 
 namespace VetConnect.Domain.Filters;
@@ -14,7 +15,7 @@ public class ListServicesHistoryFilter : Pagination
     
     public decimal LowestPrice { get; set; }
     
-    public string? PetOwnerName { get; set; }
+    public EServiceType ServiceType { get; set; }
 
     [JsonIgnore]
     public Guid PetId { get; set; }

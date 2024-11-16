@@ -27,12 +27,7 @@ internal class ServiceHistoryMap : IEntityTypeConfiguration<ServiceHistory>
             .HasColumnType("decimal(18,2)")
             .IsRequired();
 
-        builder.Property(x => x.PetId)
+        builder.Property(x => x.ServiceType)
             .IsRequired();
-
-        // Relacionamento N:1 - Um ServiceHistory pertence a um agendamento
-        builder.HasOne(sh => sh.Scheduling)
-            .WithOne(p => p.ServiceHistory)
-            .OnDelete(DeleteBehavior.Cascade);
     }
 }

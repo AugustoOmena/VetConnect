@@ -1,4 +1,5 @@
 using VetConnect.Domain.ViewModels.Pets;
+using VetConnect.Shared.Enums;
 
 namespace VetConnect.Domain.ViewModels.Services;
 
@@ -8,9 +9,8 @@ public class ServiceHistoryVm : BaseVm
     
     public string Description { get; set; }
     
-    public decimal Price { get; set; }
-
-    public Guid PetId { get; set; }
+    public EServiceType ServiceType { get; set; }
     
-    public PetVm Pet { get; set; }
+    public decimal Price { get; set; }
+    
 }

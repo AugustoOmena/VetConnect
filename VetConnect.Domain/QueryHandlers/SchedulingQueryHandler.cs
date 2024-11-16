@@ -27,7 +27,6 @@ public class SchedulingQueryHandler : BaseQueryHandler,
         var count = await _scheduling.CountAsync(where);
         
         var includes = new IncludeHelper<Scheduling>()
-            .Include(x => x.User)
             .Include(x => x.Attendance)
             .Include(x => x.Pet)
             .Include(x => x.ServiceHistory)

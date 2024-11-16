@@ -11,8 +11,7 @@ public static class ServiceHistoryProjections
         Name = serviceHistory.Name,
         Price = serviceHistory.Price,
         Description = serviceHistory.Description,
-        PetId = serviceHistory.PetId,
-        Pet = serviceHistory.Pet.ToVm()
+        ServiceType = serviceHistory.ServiceType
     };
     
     public static IEnumerable<ServiceHistoryVm> ToVm(this IEnumerable<ServiceHistory> services) => 

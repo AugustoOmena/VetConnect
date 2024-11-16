@@ -9,7 +9,7 @@ internal class SchedulingMap : IEntityTypeConfiguration<Scheduling>
     // Mapeamento do Agendamento
     public void Configure(EntityTypeBuilder<Scheduling> builder)
     {
-        builder.ToTable("Scheduling");
+        builder.ToTable("Schedulings");
 
         builder.HasKey(x => x.Id);
 
@@ -23,14 +23,12 @@ internal class SchedulingMap : IEntityTypeConfiguration<Scheduling>
         builder.Property(x => x.Description)
             .HasMaxLength(45);
 
-        builder.Property(x => x.ServiceId);
+        builder.Property(x => x.ServiceHistoryId);
         
         builder.Property(x => x.PetId);
-        
-        builder.Property(x => x.UserId);
-        
+
         builder.HasOne(p => p.ServiceHistory)
-            .WithOne(u => u.Scheduling)
-            .OnDelete(DeleteBehavior.Cascade);
+            .WithOne()
+            .HasForeignKey<Scheduling>(x => x.ServiceHistoryId);
     }
 }

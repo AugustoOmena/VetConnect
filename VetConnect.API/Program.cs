@@ -31,6 +31,7 @@ builder.Services.AddScoped<ILoggedUser, LoggedUser>();
 builder.Services.AddScoped<IDomainNotification, DomainNotification>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPetRepository, PetRepository>();
+builder.Services.AddScoped<IAttendance, AttendanceRepository>();
 builder.Services.AddScoped<IScheduling, SchedulingRepository>();
 builder.Services.AddScoped<IServiceHistoryRepository, ServiceHistoryRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

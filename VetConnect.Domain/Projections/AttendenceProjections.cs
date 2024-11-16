@@ -9,11 +9,9 @@ public static class AttendenceProjections
     public static AttendanceVm ToVm(this Attendance attendance) => new AttendanceVm()
     {
         Id = attendance.Id,
-        AppointmentId = attendance.AppointmentId,
         AttendanceStatus = attendance.AttendanceStatus,
         AgentId = attendance.AgentId,
-        CreatedAt = attendance.DateCreated.UtcDateTime,
-        Data = attendance.Data
+        CreatedAt = attendance.DateCreated.UtcDateTime
     };
     
     public static IEnumerable<AttendanceVm> ToVm(this IEnumerable<Attendance> attendences) => 

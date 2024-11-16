@@ -11,7 +11,7 @@ public class AttendanceVm : BaseVm
 
     public string Prescription { get; set; }
     
-    public Guid AgentId { get; set; }
+    public Guid? AgentId { get; set; }
     
     public Guid AppointmentId { get; set; }
     

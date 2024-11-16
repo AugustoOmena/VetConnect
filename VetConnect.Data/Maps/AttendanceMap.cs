@@ -10,14 +10,12 @@ internal class AttendanceMap : IEntityTypeConfiguration<Attendance>
     // Mapeamento do Atendimento
     public void Configure(EntityTypeBuilder<Attendance> builder)
     {
-        builder.ToTable("Attendance");
+        builder.ToTable("Attendances");
 
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id)
             .ValueGeneratedNever();
-
-        builder.Property(x => x.Data);
 
         builder.Property(x => x.Description)
             .HasMaxLength(45);
@@ -29,6 +27,6 @@ internal class AttendanceMap : IEntityTypeConfiguration<Attendance>
 
         builder.HasOne(p => p.Scheduling)
             .WithOne(u => u.Attendance)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
