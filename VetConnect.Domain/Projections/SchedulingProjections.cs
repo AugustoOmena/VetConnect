@@ -11,7 +11,9 @@ public static class SchedulingProjections
         Attendance = scheduling.Attendance.ToVm(),
         DateInitial = scheduling.DateInitial,
         DateEnd = scheduling.DateEnd,
-        Description = scheduling.Description
+        Description = scheduling.Description,
+        Pet = scheduling.Pet.ToVm(),
+        ServiceHistory = scheduling.ServiceHistory.ToVm()
     };
     
     public static IEnumerable<SchedulingVm> ToVm(this IEnumerable<Scheduling> schedulings) => 

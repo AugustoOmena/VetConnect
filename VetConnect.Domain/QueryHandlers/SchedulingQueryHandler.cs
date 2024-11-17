@@ -29,6 +29,7 @@ public class SchedulingQueryHandler : BaseQueryHandler,
         var includes = new IncludeHelper<Scheduling>()
             .Include(x => x.Attendance)
             .Include(x => x.Pet)
+            .Include(x => x.Pet.User)
             .Include(x => x.ServiceHistory)
             .Includes;
         
