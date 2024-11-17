@@ -15,7 +15,7 @@ public class SchedulingQueryHandler : BaseQueryHandler,
 {
     private readonly IScheduling _scheduling;
     
-    public SchedulingQueryHandler(IDomainNotification notifications, IScheduling scheduling) : base(notifications)
+    public SchedulingQueryHandler(IDomainNotification notifications, IScheduling scheduling, IUserRepository user) : base(notifications)
     {
         _scheduling = scheduling;
     }

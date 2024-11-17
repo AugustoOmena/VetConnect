@@ -42,7 +42,6 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Cr
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreatePetCommand>());
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<AuthorizeUserCommand>());
 
-
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

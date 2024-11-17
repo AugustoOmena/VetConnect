@@ -4,6 +4,7 @@ using VetConnect.Domain.Contracts.Repositories;
 using VetConnect.Domain.Entities;
 using VetConnect.Domain.Queries.Backoffice;
 using VetConnect.Domain.Queries.Users;
+using VetConnect.Shared.Enums;
 using VetConnect.Shared.Utils;
 
 namespace VetConnect.Data.Repositories;
@@ -27,7 +28,10 @@ public class SchedulingRepository: Repository<Scheduling>, IScheduling
 
         predicate = predicate.And(x => x.DateDeleted == null);
 
-        predicate = predicate.And(x => x.Pet.UserId == query.SessionUser.Id);
+        if (query.SessionUser.UserType == EUserType.Cliente)
+        {
+            predicate = predicate.And(x => x.Pet.UserId == query.SessionUser.Id);
+        }
         
         predicate = (query.Filter.Description == null)
             ? predicate
