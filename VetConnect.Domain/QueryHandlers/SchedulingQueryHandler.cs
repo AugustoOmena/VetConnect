@@ -14,14 +14,25 @@ public class SchedulingQueryHandler : BaseQueryHandler,
     IRequestHandler<SchedulingByUserQuery, PagedList<SchedulingVm>>
 {
     private readonly IScheduling _scheduling;
+    private readonly IUserRepository _userRepository;
     
-    public SchedulingQueryHandler(IDomainNotification notifications, IScheduling scheduling, IUserRepository user) : base(notifications)
+    public SchedulingQueryHandler(IDomainNotification notifications, IScheduling scheduling, IUserRepository user, IUserRepository userRepository) : base(notifications)
     {
         _scheduling = scheduling;
+        _userRepository = userRepository;
     }
 
     public async Task<PagedList<SchedulingVm>> Handle(SchedulingByUserQuery query, CancellationToken cancellationToken)
     {
+        var user = await _userRepository.FindAsync(x => x.Id == query.SessionUser.Id && x.DateDeleted == null);
+
+        if (user is null)
+        {
+            throw new InvalidOperationException("Usuário não encontrado.");
+        }
+
+        query.SessionUser.UserType = user.UserType;
+
         var where = _scheduling.Where(query);
             
         var count = await _scheduling.CountAsync(where);
