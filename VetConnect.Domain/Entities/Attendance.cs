@@ -31,13 +31,17 @@ public class Attendance : BaseEntity
     };
     
     public void Update(
-        string description,
-        string precription
+        string? description,
+        string? prescription,
+        Guid agentId,
+        EAttendanceStatus attendanceStatus
     )
     {
         Description = description;
-        DateCreated = DateTime.UtcNow;
-        Prescription = precription;
+        Prescription = prescription;
+        AgentId = agentId;
+        AttendanceStatus = attendanceStatus;
+        DateUppdated = DateTime.UtcNow;
     }
 
 }
