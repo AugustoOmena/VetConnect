@@ -1,4 +1,4 @@
-<h1 align="center">VetConnect</h1>
+<h1 align="center">VetConnect · API</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/.NET-8.0-blue" alt=".NET">
@@ -10,11 +10,19 @@ API do projeto VetConnect, é um app para clinicas veterinárias e PetShops, aqu
 
 Esse projeto incluí um Frontend em Angular 18: https://github.com/AugustoOmena/Frontend-VetConnect
 
-Seguindo os passos listados voce deve conseguir usar o projeto sem muitas dificuldades. Caso tenha dificuldades estou a disposição para ajudar.
+Seguindo os passos listados em setup voce deve conseguir usar o projeto sem muitas dificuldades. Caso tenha dificuldades estou a disposição para ajudar.
 
-Estado Atual:
-![image](https://github.com/user-attachments/assets/a52854e9-ebaa-4f24-8523-3d5752152f55)
+### Features
+- Autenticação JWT
+- Arquitetura em camadas robusta e escalável
+- Cruds de gestão de serviços veterinários
 
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/a5a6dddc-9fcb-4468-b759-eb125ceebba8" width="310" />
+
+  <img src="https://github.com/user-attachments/assets/1f80fb74-2978-44c7-ae41-c58c4c6a9c10" width="350" />
+
+</div>
 
 ## Pré requisitos
 
@@ -35,11 +43,7 @@ Estado Atual:
      "DefaultConnection": "Host=localhost;Database=seubanco;Username=seuusuario;Password=suasenha"
    }
 
-3. Execute as migrações do banco de dados:
-
-        dotnet ef database update
-
-4. Inicie a API:
+3. Inicie a API:
    
        dotnet run
 
